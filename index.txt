@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kanban Board</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <h1>Kanban Board</h1>
+  
+  <div class="kanban-container">
+    <!-- "To Do" Section -->
+    <div class="kanban-column" id="todo-column">
+      <h2>To Do</h2>
+      <input type="text" id="todo-input" placeholder="Add task..." />
+      <button onclick="addTask('todo')">Add Task</button>
+      <div class="kanban-list" id="todo-list"></div>
+    </div>
+    
+    <!-- "In Progress" Section -->
+    <div class="kanban-column" id="inprogress-column">
+      <h2>In Progress</h2>
+      <div class="kanban-list" id="inprogress-list"></div>
+    </div>
+    
+    <!-- "Done" Section -->
+    <div class="kanban-column" id="done-column">
+      <h2>Done</h2>
+      <div class="kanban-list" id="done-list"></div>
+    </div>
+  </div>
+
+  <!-- Modal for task details -->
+  <div class="modal" id="task-modal">
+    <div class="modal-content">
+      <span class="close-btn" onclick="closeModal()">&times;</span>
+      <h2 id="modal-task-title"></h2>
+      <textarea id="modal-task-details" placeholder="Write task details here..."></textarea>
+      <button onclick="saveTaskDetails()">Save</button>
+    </div>
+  </div>
+
+  <script src="scripts.js"></script>
+ 
+</body>
+</html>
