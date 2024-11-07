@@ -1,0 +1,225 @@
+/* General body styles */
+body {
+  font-family: Arial, sans-serif; /* Set font family for body */
+  background-color: #ECECEC; /* Light Grayish Blue background */
+  margin: 0;
+  padding: 20px;
+}
+
+/* Kanban container layout */
+.kanban-container {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 20px;
+}
+
+/* Individual column styles */
+.kanban-column {
+  background-color: #F1AEE0; /* Soft Peach background for subtle style */
+  border: 1px solid #ddd;
+  width: 30%;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  transition: transform 0.2s ease-in-out;
+  position: relative;
+}
+
+/* Specific columns with their own colors */
+#todo-column {
+  background-color: #F3D250; /* Muted Blue for "To Do" */
+}
+
+#inprogress-column {
+  background-color: #90CCF4; /* Deep Blue for "In Progress" */
+}
+
+#done-column {
+  background-color: #F78888; /* Light Grayish Blue for "Done" */
+}
+
+/* Column hover effect */
+.kanban-column.hovered {
+  outline: 3px dashed white;
+  outline-offset: -10px;
+}
+
+/* Column title styles */
+h2 {
+  text-align: center;
+  color: #40404F;
+  font-size: 1.5em;
+}
+
+/* Task input and button styling */
+input[type="text"] {
+  width: calc(100% - 20px);
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #EDCF1F;
+  border-radius: 4px;
+  font-family: Arial, sans-serif; /* Ensure same font as task */
+  font-weight: normal; /* or bold if you want */
+  font-size: 16px; /* Set the same font size */
+  color: #40404F; /* Same font color as task */
+}
+
+button {
+  padding: 10px 20px;
+  background-color: #00AEB5;
+  color: #1F3FED;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  opacity: 0.7;
+  margin-bottom: 15px;
+}
+
+button:hover {
+  background-color: #00AEB5;
+  opacity: 1;
+}
+
+/* Task item styles */
+.task {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #FFFFFF; /* White task background */
+  padding: 10px;
+  margin-bottom: 5px;
+  border-radius: 4px;
+  border: 1px solid #ddd;
+  cursor: pointer;
+  transition: background-color 0.3s ease, opacity 0.2s ease;
+  font-family: Arial, sans-serif; /* Ensure same font as input */
+  font-size: 16px; /* Set the same font size */
+  color: #40404F; /* Same font color as input */
+}
+
+.task:hover {
+  background-color: #5DA2D5; /* Red background on hover */
+  color: white;
+}
+
+/* Delete icon styling */
+.delete-icon {
+  font-size: 1.5em; /* Size of the X */
+  color: #404040; /* Dark grey color for the X */
+  cursor: pointer;
+  position: relative; /* Make it a positioning context for the circle */
+  z-index: 1; /* Ensure the X stays above the circle */
+  display: inline-block; /* To make sure the X fits neatly */
+  padding: 5px; /* Add a little padding around the X */
+  transition: color 0.2s ease; /* Smooth color transition when hovered */
+}
+
+/* Circle surrounding the X */
+.delete-icon::before {
+  content: ''; /* Empty content to create the circle */
+  position: absolute; /* Position the circle around the X */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%; /* Make the element round */
+  background-color: #d3d3d3; /* Light grey circle */
+  opacity: 0; /* Initially hidden */
+  transition: opacity 0.3s ease, background-color 0.3s ease; /* Smooth transition */
+}
+
+/* Hover effect on the delete icon */
+.delete-icon:hover {
+  color: white; /* Change the color of X to white on hover */
+}
+
+/* When hovering over the delete icon, show the circle with darker grey */
+.delete-icon:hover::before {
+  opacity: 1; /* Make the circle appear */
+  background-color: #a9a9a9; /* Darker grey when hovered */
+}
+
+/* Task hover or active effect */
+.task[draggable="true"] {
+  transition: opacity 0.2s ease;
+}
+
+/* Styling for tasks while being dragged */
+.task:active {
+  opacity: 0.7;
+  background-color: #F05254; /* Red highlight during dragging */
+}
+
+/* Modal styles */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4);
+  padding-top: 60px;
+}
+
+.modal-content {
+  background-color: white;
+  margin: 5% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  max-width: 500px;
+  border-radius: 8px;
+  text-align: center; /* Center content inside modal */
+}
+
+/* Title inside the modal */
+.modal-content h3 {
+  font-size: 2.5em; /* Make the title large */
+  margin-bottom: 20px; /* Add space below the title */
+  color: #1d3557; /* Dark color for the title */
+  font-weight: bold; /* Bold title for emphasis */
+  text-align: center; /* Ensure it's centered */
+}
+
+/* Close button inside modal */
+.close-btn {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close-btn:hover,
+.close-btn:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+textarea {
+  width: 80%;
+  height: 60px;
+  margin-bottom: 20px;
+  padding: 20px;
+  border-radius: 4px;
+  border: 1px solid #ddd;
+  resize: none;
+}
+
+button {
+  padding: 10px 20px;
+  background-color: #1d3557;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #457b9d;
+}
