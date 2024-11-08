@@ -1,0 +1,207 @@
+this is my code don't change it just the part that doesn't fit the modal content in the modal :body {
+    font-family: Arial, sans-serif;
+    background-color: #f0ead6; /* Light background */
+    color: #041421; /* Dark Blue text color */
+    margin: 0;
+    padding: 0;
+}
+
+.kanban {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+}
+
+input, button {
+    margin: 5px;
+    padding: 10px;
+    border-radius: 4px;
+    border: 1px solid #4c7273; /* Muted Teal borders */
+}
+
+button {
+    background-color: #86b9b0; /* Light Teal button */
+    color: #041421; /* Dark Blue text for button */
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #4c7273; /* Muted Teal on hover */
+}
+
+.accordion {
+    display: flex;
+    flex-direction: row;
+    overflow-x: auto;
+    width: 100%;
+    margin-top: 20px;
+}
+
+/* Define unique colors for each Kanban column */
+.column-todo {
+    background-color: #479AC2; /* Distinct Blue for To Do */
+}
+
+.column-inprocess {
+    background-color: #668DB8; /* Distinct Light Slate Blue for In Process */
+}
+
+.column-done {
+    background-color: #A1C3DE; /* Distinct Light Pastel Blue for Done */
+}
+
+/* Base column styling (shared styles) */
+.column {
+    border: 1px solid #4c7273; /* Muted Teal border */
+    margin: 5px;
+    flex: 1;
+    min-width: 300px;
+    position: relative;
+    border-radius: 4px;
+}
+
+.column h2 {
+    text-align: center;
+    color: #041421; /* Dark Blue text */
+    margin: 10px;
+}
+
+.task-list {
+    min-height: 100px;
+    padding: 10px;
+    border: 2px dotted transparent;
+    transition: border-color 0.2s ease;
+}
+
+.task {
+    background: #ffffff; /* Light Gray task background */
+    padding: 10px;
+    margin: 5px 0;
+    cursor: pointer;
+    border: 1px solid #4c7273; /* Muted Teal border around tasks */
+    border-radius: 4px;
+    transition: background 0.3s ease;
+}
+
+.task:hover {
+    background: #86b9b0; /* Light Teal task hover effect */
+}
+
+.task-list.dragover {
+    border-color: #86b9b0; /* Light Teal border on dragover */
+}
+
+
+/* Modal styles */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 50%;
+    height: 50%;
+    background-color: rgba(0, 0, 0, 0.5);
+    overflow: auto;
+    display: flex; /* Center modal vertically */
+    justify-content: center;
+    align-items: center;
+}
+
+/* Modal Content Styling */
+.modal-content {
+    background-color: white;
+    margin: 15% auto;
+    padding: 20px;
+    border-radius: 10px;
+    width: 100%; /* Ensure it fills the width of the modal container */
+    max-width: 600px; /* Max width to ensure it doesn't stretch too far on larger screens */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    box-sizing: border-box;
+    overflow-y: auto; /* Allows scrolling if content overflows */
+}
+
+/* Label and input alignment */
+label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    width: 100%;
+}
+
+/* Textarea and input fields styling */
+input[type="text"],
+input[type="date"],
+input[type="time"],
+textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+/* Disable resizing of the textarea */
+textarea {
+    resize: none; /* Disables textarea resizing */
+    height: 120px; /* Fixed height for 5 lines */
+    overflow-y: auto; /* Scroll if content exceeds height */
+}
+
+/* Task title alignment */
+#task-title {
+    font-size: 24px;
+    margin-bottom: 20px; /* Space between title and other fields */
+    text-align: center;
+}
+
+/* Buttons styles */
+button {
+    padding: 5px 15px; /* Smaller padding */
+    margin-top: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px; /* Smaller font size */
+    width: auto; /* Allow buttons to take only as much space as needed */
+    display: inline-block;
+    text-align: center;
+}
+
+/* Save button styling */
+button[type="submit"] {
+    background-color: #007bff; /* Blue background for Save */
+    color: white;
+}
+
+button[type="submit"]:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+}
+
+/* Cancel button styling */
+button[type="button"] {
+    background-color: #f44336; /* Red background for Cancel */
+    color: white;
+}
+
+button[type="button"]:hover {
+    background-color: #e31b0c; /* Darker red on hover */
+}
+
+/* Optional: Spacing between buttons */
+button[type="submit"] {
+    margin-right: 10px; /* Space between Save and Cancel buttons */
+}
+
+.placeholder {
+    background-color: #D3D3D3; /* DROPZONE COLOR*/
+    border: 2px dashed #86b9b0; /* DROPZONE DASHED LINE COLOR */
+    margin: 5px 0;
+    height: 50px; /* Same as the height defined in JS */
+    border-radius: 4px;
+}

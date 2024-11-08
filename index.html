@@ -1,48 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Kanban Board</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kanban Board</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <div class="kanban">
+        <input id="task-input" type="text" placeholder="Add a task...">
+        <button onclick="addTask()">Add Task</button>
+        
+        <div class="accordion">
+            <!-- To Do Column -->
+            <div class="column column-todo" id="todo-column" data-stage="To Do">
+                <h2>To Do</h2>
+                <div class="task-list" id="todo-list" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+            </div>
+            
+            <!-- In Process Column -->
+            <div class="column column-inprocess" id="inprocess-column" data-stage="In Process">
+                <h2>In Process</h2>
+                <div class="task-list" id="inprocess-list" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+            </div>
+            
+            <!-- Done Column -->
+            <div class="column column-done" id="done-column" data-stage="Done">
+                <h2>Done</h2>
+                <div class="task-list" id="done-list" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+            </div>
+        </div>
+    </div>
 
-  <h1>Kanban Board</h1>
-  
-  <div class="kanban-container">
-    <!-- "To Do" Section -->
-    <div class="kanban-column" id="todo-column">
-      <h2>To Do</h2>
-      <input type="text" id="todo-input" placeholder="Add task..." />
-      <button onclick="addTask('todo')">Add Task</button>
-      <div class="kanban-list" id="todo-list"></div>
-    </div>
-    
-    <!-- "In Progress" Section -->
-    <div class="kanban-column" id="inprogress-column">
-      <h2>In Progress</h2>
-      <div class="kanban-list" id="inprogress-list"></div>
-    </div>
-    
-    <!-- "Done" Section -->
-    <div class="kanban-column" id="done-column">
-      <h2>Done</h2>
-      <div class="kanban-list" id="done-list"></div>
-    </div>
-  </div>
+    <!-- Task Modal -->
+    <div id="task-modal" class="modal">
+        <div class="modal-content">
+            <h3 id="task-title" class="task-title">Task Name</h3>
+            <label for="task-desc"></label>
+            <textarea id="task-desc" placeholder="Task Description"></textarea>
 
-  <!-- Modal for task details -->
-  <div class="modal" id="task-modal">
-    <div class="modal-content">
-      <span class="close-btn" onclick="closeModal()">&times;</span>
-      <h2 id="modal-task-title"></h2>
-      <textarea id="modal-task-details" placeholder="Write task details here..."></textarea>
-      <button onclick="saveTaskDetails()">Save</button>
-    </div>
-  </div>
+            <label for="task-date"></label>
+            <input type="date" id="task-date">
 
-  <script src="scripts.js"></script>
- 
+            <label for="task-time"></label>
+            <input type="time" id="task-time">
+
+            <button type="submit" onclick="saveTask()">Save</button>
+            <button type="button" onclick="closeModal()">Cancel</button>
+        </div>
+    </div>
+
+
+
+    <script src="script.js"></script>
 </body>
 </html>
